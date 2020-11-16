@@ -21,6 +21,11 @@ test!(
     include_str!("directive.graphql")
 );
 test!(
+    directive_repeatable,
+    include_str!("directive_repeatable.graphql"),
+    include_str!("directive_repeatable.graphql")
+);
+test!(
     directive_args,
     include_str!("directive_args.graphql"),
     include_str!("directive_args.graphql")
