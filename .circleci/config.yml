@@ -38,6 +38,12 @@ commands:
       - oss/install_specific_npm_version
       - checkout
       - oss/npm_clean_install_with_caching
+      # npm ci results in some unexpected FS writes, which this undoes
+      # more specifically, the monorepo-prepare / wasm-pack scripts
+      # are causing these writes in CI and can't be reproduced locally.
+      - run:
+          name: Git reset
+          command: git reset HEAD --hard
       - run:
           command: npm run test:ci
           environment:
